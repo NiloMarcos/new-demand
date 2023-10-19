@@ -12,8 +12,6 @@ export const Container = styled.View`
 export const ContentSearch = styled.View `
   flex-direction: row;
   align-items: center;
-  /* justify-content: center; */
-
 
   padding: 13px 20px;
   margin-top: ${getStatusBarHeight() + 22}px;
@@ -45,5 +43,58 @@ export const Name = styled.Text `
   color: ${({ theme }) => theme.colors.text_dark};
 `;
 
+export const ContainerCardProjects = styled.View `
+  background-color: ${({ theme }) => theme.colors.card};
+  
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 
-// ...
+  padding: 24px;
+  margin: 0 28px;
+  
+  border-radius: 28px;
+`;
+
+export const ContentCardProjectsTexts = styled.View `
+  margin-right: 46px;
+`;
+
+export const ContentCardProjectsProfileImg = styled.View `
+
+`;
+
+export const Title = styled.Text`
+  font-size: ${RFValue(18)}px;
+  font-family: ${({ theme }) => theme.fonts.bold};
+  color: ${({ theme }) => theme.colors.text_dark};
+
+  max-width: 84px;
+  padding-bottom: 2px;
+`;
+
+export const SubTitle = styled.Text`
+  font-size: ${RFValue(11)}px;
+  font-family: ${({ theme }) => theme.fonts.regular};
+  color: ${({ theme }) => theme.colors.black};
+
+  opacity: .3;
+  padding-bottom: 31px;
+`;
+
+export const LinkViewMore = styled.TouchableOpacity`
+  
+`;
+
+export const LinkViewMoreText = styled.Text`
+  font-size: ${RFValue(13)}px;
+  font-family: ${({ theme }) => theme.fonts.bold};
+  color: ${({ theme }) => theme.colors.red_opacity};
+
+  text-decoration: underline;
+  text-decoration-color: ${({ theme }) => theme.colors.red_opacity};
+`;
+
+export const Image = styled.Image`
+
+`;

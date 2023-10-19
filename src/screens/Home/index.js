@@ -1,10 +1,8 @@
 import React from 'react';
 
-import {
-  Text
-} from 'react-native';
-
 import Icon from '@expo/vector-icons/Feather';
+
+import Profile from '../../assets/profile.png';
 
 import {
   Container,
@@ -12,8 +10,17 @@ import {
   Input,
   ContentGrettings,
   Grettings,
-  Name
+  Name,
+  ContainerCardProjects,
+  ContentCardProjectsTexts,
+  ContentCardProjectsProfileImg,
+  Title,
+  SubTitle,
+  LinkViewMore,
+  LinkViewMoreText,
+  Image
 } from './styles';
+import { ListProjects } from '../../components/ListProjects';
 
 export function Home() {
   return (
@@ -27,6 +34,26 @@ export function Home() {
         <Grettings>Olá</Grettings>
         <Name>Kathryn</Name>
       </ContentGrettings>
+
+      <ContainerCardProjects>
+        <ContentCardProjectsTexts>
+          <Title>Seus projetos</Title>
+          <SubTitle>2 de 4 Completos</SubTitle>
+
+          <LinkViewMore>
+            <LinkViewMoreText>
+              Ver mais
+            </LinkViewMoreText>
+          </LinkViewMore>
+        </ContentCardProjectsTexts>
+
+        <ContentCardProjectsProfileImg>
+          <Image source={Profile} />
+        </ContentCardProjectsProfileImg>
+      </ContainerCardProjects>
+
+      <ListProjects />
+
     </Container>
   );
 }

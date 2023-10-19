@@ -11,7 +11,10 @@ export function TabNavigator() {
     <Tab.Navigator>
       <Tab.Screen 
         name="Home" 
-        component={Home} 
+        component={Home}
+        options={{
+          headerShown: false
+        }}
       />
 
       

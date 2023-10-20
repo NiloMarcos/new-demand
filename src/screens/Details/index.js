@@ -1,11 +1,29 @@
 import React from 'react';
 
-import { View, Text } from 'react-native';
+import Arrow from '../../assets/left-arrow.png';
+
+import { useNavigation } from '@react-navigation/native';
+
+import {
+  Container,
+  BackButton,
+  Image,
+  Title
+
+
+} from './styles';
 
 export function Details() {
+  const navigation = useNavigation();
+
   return (
-    <View>
-      <Text>Screen Details</Text>
-    </View>
+    <Container>
+      <BackButton onPress={() => navigation.goBack()}>
+        <Image source={Arrow} />
+      </BackButton>
+      
+      <Title>Nova demanda</Title>
+
+    </Container>
   );
 }

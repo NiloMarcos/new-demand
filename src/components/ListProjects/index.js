@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { Text } from 'react-native';
-
 import { FontAwesome, Feather } from '@expo/vector-icons';
 
 import {
@@ -16,7 +14,11 @@ import {
   Status
 } from './styles';
 
+import { useNavigation } from '@react-navigation/native';
+
 export function ListProjects() {
+  const navigation = useNavigation();
+
   const projects = [
     { id: Math.random(), name: 'Projeto 1', hour: '05:00 PM •', status: 'Finalizado' },
     { id: Math.random(), name: 'Projeto 2', hour: '10:00 AM •', status: 'Finalizado' },
@@ -34,7 +36,7 @@ export function ListProjects() {
       >
         {projects.map(item => {
           return (
-            <ContainerProject key={item.id}>
+            <ContainerProject key={item.id} onPress={() => navigation.navigate('Details', { screen: 'Details' })}>
               <FontAwesome name='briefcase' size={20} color='#9B9B9B' />
 
               <ContentProjectAndHour>

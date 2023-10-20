@@ -1,7 +1,15 @@
 import React from 'react';
 
-import { TabNavigator } from './bottomTab';
+import { TabNavigator } from './tab.router';
+
+import { StackNavigator } from './stack.router';
+ 
+import { NavigationContainer } from '@react-navigation/native';
 
 export function Routes() {
-  return <TabNavigator />
+  return (
+    <NavigationContainer>
+      <StackNavigator />
+    </NavigationContainer>
+  )
 }

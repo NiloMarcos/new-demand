@@ -10,7 +10,7 @@ import { useFonts } from 'expo-font';
 
 import * as SplashScreen from 'expo-splash-screen';
 
-import { NavigationContainer } from '@react-navigation/native';
+// import { NavigationContainer } from '@react-navigation/native';
 
 import { Routes } from './src/routes'
 
@@ -35,9 +35,7 @@ export default function App() {
   
   return (
     <ThemeProvider theme={theme}>
-      <NavigationContainer>
-        <Routes />
-      </NavigationContainer>
+      <Routes />
     </ThemeProvider>
   )
 }

@@ -1,10 +1,6 @@
-<h1 align="center">DT Money</h1>
+<h1 align="center">NewDemand</h1>
 
 <!-- Getting Started -->
-# Sobre a aplicação
-Aplicação desenvolvida no treinamento Ignite da Rocketseat, para aplimorar os conhecimentos de estado, consumo de API e useContext.
-Projeto é uma aplicação para calcular finanças como entrada e saída de dinheiro, assim podendo ter controle de suas finanças.
-
 ### INICIANDO O PROJETO
 
 Para instalar o projeto em sua maquina siga os passos abaixo.

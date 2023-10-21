@@ -4,6 +4,8 @@ import Icon from '@expo/vector-icons/Feather';
 
 import Profile from '../../assets/profile.png';
 
+import { Platform } from 'react-native';
+
 import {
   Container,
   ContentSearch,
@@ -24,7 +26,7 @@ import { ListProjects } from '../../components/ListProjects';
 
 export function Home() {
   return (
-    <Container>
+    <Container style={{ marginTop: Platform === 'ios' ? 50 : 30 }}>
       <ContentSearch>
         <Icon name='search' color='#9B9B9B' size={20} />
         <Input placeholder='Buscar projeto' />

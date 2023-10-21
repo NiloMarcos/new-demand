@@ -10,9 +10,13 @@ import { Chat } from '../screens/Chat';
 
 import { Profile } from '../screens/Profile';
 
+import { Register } from '../screens/Register';
+
 import { Entypo } from '@expo/vector-icons/';
 
 // import { StackNavigator } from './stack.router';
+
+import { PlusNavigation } from '../components/PlusNavigation'
 
 export function TabNavigator() {
   const Tab = createBottomTabNavigator();
@@ -23,7 +27,11 @@ export function TabNavigator() {
         tabBarActiveTintColor: '#1BD15D',
         tabBarInactiveTintColor: '#9B9B9B',
         tabBarShowLabel: false,
-        headerShown: false
+        headerShown: false,
+        tabBarStyle: {
+          backgroundColor: 'transparent',
+          border: 0
+        }
       })}
     >
       <Tab.Screen 
@@ -52,7 +60,17 @@ export function TabNavigator() {
             />
           ) 
         }}
-      />    
+      />  
+
+      <Tab.Screen 
+        name='Register'
+        component={Register}
+        options={{
+          tabBarIcon: (() => 
+            <PlusNavigation />
+          ) 
+        }}
+      />
 
       <Tab.Screen 
         name='Chat'

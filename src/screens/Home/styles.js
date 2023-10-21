@@ -2,8 +2,6 @@ import styled from 'styled-components/native';
 
 import { RFValue } from 'react-native-responsive-fontsize';
 
-import { getStatusBarHeight } from 'react-native-iphone-x-helper'
-
 export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.shape};
   flex: 1;
@@ -14,7 +12,6 @@ export const ContentSearch = styled.View `
   align-items: center;
 
   padding: 13px 20px;
-  margin-top: ${getStatusBarHeight() + 22}px;
   margin-right: 28px;
   margin-left: 28px;
 

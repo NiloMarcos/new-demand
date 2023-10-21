@@ -7,11 +7,9 @@ import { useNavigation } from '@react-navigation/native';
 import {
   Container,
   BackButton,
-  Image,
-  Title
-
-
+  Image
 } from './styles';
+import { Text } from 'react-native';
 
 export function Details() {
   const navigation = useNavigation();
@@ -21,9 +19,8 @@ export function Details() {
       <BackButton onPress={() => navigation.goBack()}>
         <Image source={Arrow} />
       </BackButton>
-      
-      <Title>Nova demanda</Title>
 
+      <Text>Página de detalhes</Text>
     </Container>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import Icon from '@expo/vector-icons/Feather';
 
@@ -13,6 +13,8 @@ import Calendar from '../../assets/calendar.png';
 import { useNavigation } from '@react-navigation/native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import { Modalize } from 'react-native-modalize';
 
 import {
   Container,
@@ -38,14 +40,20 @@ import {
   Status,
   ImageS
 } from './styles';
+import { Details } from '../Details';
 
 export function Home() {
   const navigation = useNavigation();
 
   const [ formInfo, setFormInfo ] = useState([]);
+
   const [ login, setLogin ] = useState([])
 
-  // console.log('Agora é no seu state', formInfo)
+  const modalizeRef = useRef(null);
+
+  const onOpen = () => {
+    modalizeRef.current?.open();
+  };
 
   useEffect(() => {
     getData();
@@ -109,7 +117,7 @@ export function Home() {
 
       <DailyReviewText>Daily Review</DailyReviewText>
 
-      <ContainerProject onPress={() => navigation.navigate('Details', { screen: 'Details' })}>
+      <ContainerProject onPress={() => onOpen()}>
         <ImageS source={Calendar} />
         <ContentProjectAndHour>
 
@@ -123,6 +131,14 @@ export function Home() {
 
         <Feather name='chevron-right' size={20} color='#9B9B9B' />
       </ContainerProject>
+
+      <Modalize 
+        ref={modalizeRef}
+        snapPoint={500}
+        key={formInfo?.nameproject}
+      >
+        <Details />
+      </Modalize>
 
     </Container>
   );

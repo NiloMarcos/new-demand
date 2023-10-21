@@ -27,8 +27,11 @@ export function TabNavigator() {
         tabBarShowLabel: false,
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: '#FFF',
-          border: 0
+          backgroundColor: '#fff',
+          border: 0,
+          height: 80,
+          shadowColor: '#fff',
+          borderTopWidth: 0
         }
       })}
     >

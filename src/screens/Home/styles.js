@@ -18,10 +18,12 @@ export const ContentSearch = styled.View `
   background-color: ${({ theme }) => theme.colors.light_gray};
 
   border-radius: 14px;
+
+  margin-top: 20px;
 `;
 
 export const Input = styled.TextInput `
-  padding: 13px 16px;
+  padding: 0 16px;
 `;
 
 export const ContentGrettings = styled.View `

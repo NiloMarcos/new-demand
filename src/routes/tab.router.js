@@ -14,8 +14,6 @@ import { Register } from '../screens/Register';
 
 import { Entypo } from '@expo/vector-icons/';
 
-// import { StackNavigator } from './stack.router';
-
 import { PlusNavigation } from '../components/PlusNavigation'
 
 export function TabNavigator() {
@@ -29,7 +27,7 @@ export function TabNavigator() {
         tabBarShowLabel: false,
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: 'transparent',
+          backgroundColor: '#FFF',
           border: 0
         }
       })}

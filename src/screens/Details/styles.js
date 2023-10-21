@@ -6,6 +6,9 @@ export const Container = styled.View `
   background-color: ${({ theme }) => theme.colors.shape};
   flex: 1;
   padding: 0 28px;
+
+  justify-content: center;
+  align-items: center;
 `;
 
 export const TypeProject = styled.View `

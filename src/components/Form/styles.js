@@ -41,10 +41,10 @@ export const Icon = styled.Image `
 `;
 
 export const InputProject = styled.TextInput `
-  position: absolute;
-  left: 52px;
+  /* position: absolute;
+  left: 52px; */
 
-  width: 100%;
+  width: 80%;
 `;
 
 export const UrgencyAndTime = styled.View `
@@ -154,10 +154,6 @@ export const ContentInputButton = styled.View `
   flex-direction: row;
   align-items: center;
 
-`;
-
-export const InputNotification = styled.TextInput `
-  padding-left: 14px;
 `;
 
 export const ButtonPlus = styled.TouchableOpacity `

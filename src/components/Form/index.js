@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
+
+import { Text } from 'react-native';
 
 import Bag from '../../assets/bag.png';
 
@@ -17,6 +19,14 @@ import Dev from '../../assets/dev.png';
 import Sino from '../../assets/notification.png';
 
 import Plus from '../../assets/add-line.png';
+
+import { useForm, Controller } from 'react-hook-form';
+
+import { yupResolver } from '@hookform/resolvers/yup';
+
+import * as yup from 'yup'
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
   Container,
@@ -38,14 +48,46 @@ import {
   TextSelect,
   Notification,
   NotificationContentInput,
-  InputNotification,
   ButtonPlus,
   ContentInputButton,
   ButtonSend,
   TextSend
 } from './styles.js';
 
+import { useNavigation } from '@react-navigation/native';
+
+const schema = yup.object({
+  nameproject: yup.string().required('Informe o nome do projeto'),
+  urgencyproject: yup.string().required('Informe o prazo'),
+  daysproject: yup.string().required('Informe os dias'),
+  notificationproject: yup.string().required('Informe o horário da notificação')
+});
+
 export function Form() {
+  const { control, handleSubmit, formState: { errors } } = useForm({
+    resolver: yupResolver(schema)
+  });
+
+  const navigation = useNavigation();
+
+  async function handleSubmitProjectForm(data) {
+    console.log(data)
+
+    try {
+      console.log('Minhas Informações', data)
+
+      const jsonValue = JSON.stringify(data)
+
+      await AsyncStorage.setItem('infos', jsonValue);
+
+      navigation.navigate('Home')
+
+    } catch (e) {
+      // saving error
+      console.log('Ocorreu um error: ' + e.message)
+    }
+  };
+
   return (
     <Container>
       <TypeProject>
@@ -54,13 +96,26 @@ export function Form() {
         <ProjectContent>
           <Icon source={Bag} />
 
-          <InputProject placeholder="Nome do projeto" />
+          <Controller 
+            control={control}
+            name='nameproject'
+            render={({ field: { onChange, onBlur, value} }) => (
+              <InputProject 
+                placeholder='Nome do projeto' 
+                onChangeText={onChange}
+                onBlur={onBlur}
+                value={value}
+
+              />
+            )}
+          />
 
           <Link>
             <Icon source={Qr} />
           </Link>
         </ProjectContent>
       </TypeProject>
+      {errors.nameproject && <Text style={{ color: 'red', position: 'relative', top: -20 }}>{errors.nameproject?.message}</Text>}
 
       <UrgencyAndTime>
         <Title>Urgência & Tempo esperado</Title>
@@ -69,13 +124,40 @@ export function Form() {
           <ContentUrgency>
             <Icon source={Exclamation} />
 
-            <InputUrgency placeholder='Urgência' />
+            <Controller 
+              control={control}
+              name='urgencyproject'
+              render={({ field: { onChange, onBlur, value} }) => (
+                <InputUrgency 
+                  placeholder='Urgência' 
+                  onChangeText={onChange}
+                  onBlur={onBlur}
+                  value={value}
+
+              />
+            )}
+          />
+
+          {errors.urgencyproject && <Text style={{ color: 'red', position: 'absolute', bottom: -15  }}>{errors.urgencyproject?.message}</Text>}
           </ContentUrgency>
 
           <ContentTime>
             <Icon source={Calendar} />
 
-            <InputUrgency placeholder='30 dias' />
+            <Controller 
+              control={control}
+              name='daysproject'
+              render={({ field: { onChange, onBlur, value} }) => (
+                <InputUrgency 
+                  placeholder='30 Dias' 
+                  onChangeText={onChange}
+                  onBlur={onBlur}
+                  value={value}
+
+                />
+              )}
+            />
+            {errors.daysproject && <Text style={{ color: 'red', position: 'absolute', bottom: -15  }}>{errors.daysproject?.message}</Text>}
           </ContentTime>
         </WrapperFormUrgency>
       </UrgencyAndTime>
@@ -113,7 +195,20 @@ export function Form() {
           <NotificationContentInput>
             <Icon source={Sino} />
 
-            <InputNotification placeholder='10:00 AM' />
+            <Controller 
+              control={control}
+              name='notificationproject'
+              render={({ field: { onChange, onBlur, value} }) => (
+                <InputUrgency 
+                  placeholder='10:00 AM' 
+                  onChangeText={onChange}
+                  onBlur={onBlur}
+                  value={value}
+
+                />
+              )}
+            />
+            {errors.notificationproject && <Text style={{ color: 'red', position: 'absolute', bottom: -20  }}>{errors.notificationproject?.message}</Text>}
           </NotificationContentInput>
 
           <ButtonPlus>
@@ -122,7 +217,7 @@ export function Form() {
         </ContentInputButton>
       </Notification>
 
-      <ButtonSend>
+      <ButtonSend onPress={handleSubmit(handleSubmitProjectForm)}>
         <TextSend>Enviar</TextSend>
       </ButtonSend>
 

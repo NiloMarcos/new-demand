@@ -6,11 +6,15 @@ import { Details } from '../screens/Details';
 
 import { TabNavigator } from './tab.router';
 
+import { SignIn } from '../screens/SignIn';
+
 export function StackNavigator() {
   const Stack = createNativeStackNavigator();
   
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      initialRouteName='SignIn'
+    >
       <Stack.Screen 
         name='Tab'
         component={TabNavigator}
@@ -22,6 +26,14 @@ export function StackNavigator() {
       <Stack.Screen 
         name='Details'
         component={Details}
+        options={{
+          headerShown: false
+        }}
+      />
+      
+      <Stack.Screen 
+        name='SignIn'
+        component={SignIn}
         options={{
           headerShown: false
         }}
